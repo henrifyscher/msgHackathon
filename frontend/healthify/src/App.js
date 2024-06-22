@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useEffect,useContext } from "react";
+import Aos from "aos"
+import Footer from "./UI/Footer";
+import Header from "./component/Header";
+import AllRoutes from "./component/AllRoutes";
+import Login from "./UI/LogIn/Login";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+  useEffect(()=>{
+    Aos.init();
+  },[])
+
+  return <>
+  <Header/>
+  <AllRoutes/>
+  <Footer/>
+  {/* <Login/> */}
+  </>;
 }
 
 export default App;
