@@ -9,4 +9,5 @@
 * swal
 * aos-animation
 
+pls install this package :npm install react-big-calendar moment
 

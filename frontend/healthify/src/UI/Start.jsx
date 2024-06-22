@@ -1,8 +1,14 @@
 import React from 'react'
 import trainer from "../assets/img/trainer.png"
+import { useNavigate } from 'react-router-dom';
 import "../styles/start.css";
 
 const Start = () => {
+  const navigate = useNavigate();
+
+  const handleGetStarted = () => {
+    navigate('/BookAppointment');
+  };
   return <section>
     <div className="container">
         <div className="start__wrapper">
@@ -13,7 +19,7 @@ const Start = () => {
             <div className="start__content" data-aos-duration="1100" data-aos="fade-right">
                 <h2 className="section__title">Ready to make <span className="highlights">Change?</span></h2>
                 <p>Remember, it's important to start slowly and gradually increase the intensity and duration of your exercise routine. Consult us as your healthcare provider before starting any new exercise program. Good luck, and enjoy the journey with us towards a healthier you!</p>
-                <button className="register__btn">Get Started</button>
+                <button className="register__btn" onClick={handleGetStarted}>Get Started</button>
             </div>
         </div>
     </div>

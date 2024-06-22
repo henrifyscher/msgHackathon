@@ -1,10 +1,13 @@
 import "./App.css";
-import { useEffect,useContext } from "react";
+import React, { useEffect } from 'react';
 import Aos from "aos"
+import { BrowserRouter as Router } from 'react-router-dom';
 import Footer from "./UI/Footer";
 import Header from "./component/Header";
 import AllRoutes from "./component/AllRoutes";
-import Login from './component/Login'
+import { BookingProvider } from './UI/BookingContext';
+
+
 
 
 function App() {
@@ -14,9 +17,12 @@ function App() {
   },[])
 
   return <>
+  <BookingProvider> 
   <Header/>
   <AllRoutes/>
   <Footer/>
+  </BookingProvider>
+  
   </>;
 }
 

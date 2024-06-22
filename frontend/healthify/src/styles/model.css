@@ -1,0 +1,36 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal {
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    width: 50%;
+    text-align: center;
+  }
+  
+  .close-button {
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+  }
+  
+  .close-button:hover {
+    background-color: #9b57ea;
+  }
+  

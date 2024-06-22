@@ -24,9 +24,14 @@ const nav__links = [
     display: "Track your fitness",
   },
   {
+    path: "/calendar",  
+    display: "Calendar", 
+  },
+  {
     path: "/login",
     display: "Log in"
-  }
+  },
+
 ];
 
 function GotoLogin(){

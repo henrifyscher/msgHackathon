@@ -13,6 +13,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import PrivateRoute from './PrivateRoute';
 // import Login from '../UI/LogIn/Login';
 import Login from '../component/Login';
+import CalendarPage from '../UI/CalendarPage'; 
+import BookAppointment from '../UI/BookAppointment'; 
 
 const AllRoutes = () => {
   const {loginWithRedirect, isAuthenticated,} = useAuth0();
@@ -23,6 +25,9 @@ const AllRoutes = () => {
       <Route path="/" element={<Home/>} />  
       <Route path="/programs" element={<Testimonials />} />  
       <Route path="/membership" element={<Pricing />} />  
+      <Route path="/BookAppointment" element={<BookAppointment />} />
+      <Route path="/calendar" element={<CalendarPage />} /> 
+   
       <Route path="/track" element={
         isAuthenticated?<Track />:<Login/>
       } />

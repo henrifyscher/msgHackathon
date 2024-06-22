@@ -55,8 +55,7 @@ const Footer = () => {
 
             <ul className="footer__links">
               <li>
-                <a href="#">About us</a>
-              </li>
+              <a href="/AdminsPage">About Us</a>              </li>
               <li>
                 <a href="#">Contact us</a>
               </li>

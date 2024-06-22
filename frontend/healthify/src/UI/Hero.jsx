@@ -1,8 +1,14 @@
 import React from 'react'
 import heroImg from "../assets/img/model1-removebg-preview.png"
 import "../styles/hero.css";
+import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
+    const navigate = useNavigate();
+  
+    const handleGetStarted = () => {
+      navigate('/BookAppointment');
+    };
   return <section id='#'>
     <div className="container">
         <div className="hero__wrapper">
@@ -11,7 +17,7 @@ const Hero = () => {
                 <p data-aos-duration="1100" data-aos="fade-up" data-aos-delay="100">Regular exercise is a crucial component of a healthy lifestyle.<br/>It has numerous benefits for physical and mental health, including reducing the risk of chronic diseases,improving cardiovascular function,<br/>  enhancing mood, reducing stress, and promoting better sleep.</p>
 
                 <div className="hero__btns" data-aos-duration="1200" data-aos="fade-up" data-aos-delay="200">
-                    <button className='register__btn'>Get Started</button>
+                    <button className='register__btn' onClick={handleGetStarted}>Get Started</button>
                     <button className='watch_btn'><span><i className="ri-play-fill"></i></span>Watch Video</button>
                 </div>
             </div>
