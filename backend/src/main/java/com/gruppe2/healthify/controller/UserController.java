@@ -23,4 +23,10 @@ public class UserController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
+    @PostMapping("/init")
+    public String initExercises() {
+        userService.initUsers();
+        return "Users initialized";
+    }
 }

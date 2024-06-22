@@ -20,4 +20,11 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
+    public User() {}
+
+    public User(String username, String password, String email) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
 }
