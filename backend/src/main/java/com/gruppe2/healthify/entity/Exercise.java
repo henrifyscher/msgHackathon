@@ -16,4 +16,12 @@ public class Exercise {
 
     private String description;
     private int difficultyLevel;
+
+    public Exercise() {}
+
+    public Exercise(String name, String description, int difficultyLevel) {
+        this.name = name;
+        this.description = description;
+        this.difficultyLevel = difficultyLevel;
+    }
 }
