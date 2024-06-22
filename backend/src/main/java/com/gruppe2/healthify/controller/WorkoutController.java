@@ -20,7 +20,7 @@ public class WorkoutController {
         return workoutService.saveWorkout(workout);
     }
 
-    @GetMapping
+        @GetMapping
     public List<Workout> getWorkoutsForUserOnDate(@RequestParam Long userId, @RequestParam String date) {
         User user = new User();
         user.setId(userId);
