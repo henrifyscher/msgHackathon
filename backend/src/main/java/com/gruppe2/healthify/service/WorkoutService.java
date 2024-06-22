@@ -1,8 +1,8 @@
 package com.gruppe2.healthify.service;
 
-import com.gruppe2.healthify.entity.Exercise;
 import com.gruppe2.healthify.entity.Workout;
 import com.gruppe2.healthify.entity.User;
+import com.gruppe2.healthify.entity.Exercise;
 import com.gruppe2.healthify.repository.ExerciseRepository;
 import com.gruppe2.healthify.repository.UserRepository;
 import com.gruppe2.healthify.repository.WorkoutRepository;
@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -26,14 +25,13 @@ public class WorkoutService {
     @Autowired
     private ExerciseRepository exerciseRepository;
 
+    @Autowired
+    private GuerillaMailService mailService;
+
     // Parameters for Workout -Mock data
     int numberOfWorkout = 5;
     int dayRange = 30;
     int numberOfExercises = 6;
-
-    public List<Workout> getWorkoutsForUserOnDate(User user, LocalDate date) {
-        return workoutRepository.findByUserAndDate(user, date);
-    }
 
     public Workout saveWorkout(Workout workout) {
         return workoutRepository.save(workout);
@@ -43,6 +41,7 @@ public class WorkoutService {
         Optional<User> user = userRepository.findById(userId);
         return user.map(workoutRepository::findByUser).orElseThrow(() -> new RuntimeException("User not found"));
     }
+
     public void initWorkouts() {
         LocalDate today = LocalDate.now();
         List<User> users = userRepository.findAll();
@@ -67,6 +66,22 @@ public class WorkoutService {
         return (List<Workout>) workoutRepository.findAll();
     }
 
+    public void sendWorkoutsByEmail(User user, String toEmail) {
+        System.out.println("Preparing to send workouts by email for user: " + user.getUsername());
+        List<Workout> workouts = workoutRepository.findByUser(user);
+        StringBuilder emailBody = new StringBuilder();
+        emailBody.append("Here are your workouts:\n\n");
 
+        for (Workout workout : workouts) {
+            emailBody.append("Workout ID: ").append(workout.getId()).append("\n");
+            emailBody.append("Exercises:\n");
+            workout.getExercises().forEach(exercise ->
+                    emailBody.append("- ").append(exercise.getName()).append("\n")
+            );
+            emailBody.append("\n");
+        }
 
+        mailService.sendMail(toEmail, "Your Workouts", emailBody.toString());
+        System.out.println("Email sent successfully to " + toEmail);
+    }
 }

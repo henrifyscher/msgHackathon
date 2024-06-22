@@ -10,12 +10,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/workouts")
 public class WorkoutController {
+
+    @Autowired
+    private UserService userService;
+
     @Autowired
     private WorkoutService workoutService;
 
@@ -30,26 +34,38 @@ public class WorkoutController {
         return workoutService.saveWorkout(workout);
     }
 
-    @GetMapping("/hurensohn")
-    public List<Workout> getWorkoutsForUserOnDate(@RequestParam Long userId, @RequestParam String date) {
-        User user = new User();
-        user.setId(userId);
-        LocalDate localDate = LocalDate.parse(date);
-        return workoutService.getWorkoutsForUserOnDate(user, localDate);
-    }
-
-    @GetMapping("/{username}")
+    @GetMapping("/username/{username}")
     public List<Workout> getWorkoutsForUser(@PathVariable String username) {
-        User user = userRepository.findByUsername(username).orElseThrow( () -> new RuntimeException("User not found"));
-        return workoutRepository.findByUser(user);
+        System.out.println("Received request to get workouts for username: " + username);
+        Optional<User> optionalUser = userRepository.findByUsername(username);
+        if(optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            System.out.println("User found: " + user.getUsername());
+            return workoutRepository.findByUser(user);
+        } else {
+            System.out.println("User not found for username: " + username);
+            throw new RuntimeException("User not found");
+        }
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<Workout>> getAllWorkouts() {
         List<Workout> workout = workoutService.findAll();
         return ResponseEntity.ok(workout);
     }
+
+    @PostMapping("/send-email")
+    public String sendWorkoutsByEmail(@RequestParam Long userId) {
+        System.out.println("Received request to send email for userId: " + userId);
+        Optional<User> optionalUser = userRepository.findById(userId);
+        if(optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            System.out.println("User found: " + user.getUsername());
+            workoutService.sendWorkoutsByEmail(user, "mail@paulkeck.de");
+            return "Email sent successfully";
+        } else {
+            System.out.println("User not found for userId: " + userId);
+            throw new RuntimeException("User not found");
+        }
+    }
 }
-
-
-
