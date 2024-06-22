@@ -13,7 +13,9 @@ import java.util.stream.Stream;
 @Service
 public class ExerciseService {
 
-    exercise_search
+    @Autowired
+    private ExerciseRepository exerciseRepository;
+
     public void initExercises() {
         List<Exercise> exercises = Stream.of(
                         new Exercise("Bankdrücken","Eine Übung für die Brustmuskulatur.",3),
@@ -29,20 +31,14 @@ public class ExerciseService {
                 .toList();
         exerciseRepository.saveAll(exercises);
     }
-    @Autowired
-    private ExerciseRepository exerciseRepository;
 
     public Exercise saveExercise(Exercise exercise) {
         return exerciseRepository.save(exercise);
     }
 
     //TODO  FlexiSearch (Ergo kp 3 chars und dann auswahl an 5 koressponding exercises zurückgeben)
- repos_und_entities
 
     List<Exercise> exercises;
-
-    @Autowired
-    private ExerciseRepository exerciseRepository;
 
     public List<Exercise> flexiSearch(String query) {
         return exerciseRepository.findByNameLike(query+"%")
