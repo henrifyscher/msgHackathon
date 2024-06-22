@@ -2,6 +2,7 @@ package com.gruppe2.healthify.repository;
 
 import com.gruppe2.healthify.entity.Workout;
 import com.gruppe2.healthify.entity.User;
+import lombok.Data;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -12,4 +13,5 @@ import java.util.List;
 public interface WorkoutRepository extends CrudRepository<Workout, Long> {
     List<Workout> findByUserAndDate(User user, LocalDate date);
     List<Workout> findByUser(User user);
+
 }

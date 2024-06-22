@@ -63,6 +63,10 @@ public class WorkoutService {
         workoutRepository.saveAll(workouts);
     }
 
+    public List<Workout> findAll() {
+        return (List<Workout>) workoutRepository.findAll();
+    }
+
 
 
 }

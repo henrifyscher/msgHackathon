@@ -7,6 +7,7 @@ import com.gruppe2.healthify.repository.WorkoutRepository;
 import com.gruppe2.healthify.service.UserService;
 import com.gruppe2.healthify.service.WorkoutService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -29,7 +30,7 @@ public class WorkoutController {
         return workoutService.saveWorkout(workout);
     }
 
-    @GetMapping
+    @GetMapping("/hurensohn")
     public List<Workout> getWorkoutsForUserOnDate(@RequestParam Long userId, @RequestParam String date) {
         User user = new User();
         user.setId(userId);
@@ -42,6 +43,13 @@ public class WorkoutController {
         User user = userRepository.findByUsername(username).orElseThrow( () -> new RuntimeException("User not found"));
         return workoutRepository.findByUser(user);
     }
+
+    @GetMapping
+    public ResponseEntity<List<Workout>> getAllWorkouts() {
+        List<Workout> workout = workoutService.findAll();
+        return ResponseEntity.ok(workout);
+    }
 }
+
 
 
