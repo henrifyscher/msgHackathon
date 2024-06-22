@@ -28,4 +28,12 @@ public class Workout {
             inverseJoinColumns = @JoinColumn(name = "exercise_id")
     )
     private List<Exercise> exercises;
+
+    public Workout(){}
+
+    public Workout(User user, LocalDate date, List<Exercise> exercises) {
+        this.user = user;
+        this.date = date;
+        this.exercises = exercises;
+    }
 }

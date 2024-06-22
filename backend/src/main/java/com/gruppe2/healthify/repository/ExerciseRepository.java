@@ -9,6 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface ExerciseRepository extends CrudRepository<Exercise, Long> {
-
+   @Override
+   List<Exercise> findAll();
    List<Exercise> findByNameStartsWith(String name);
 }
