@@ -16,9 +16,5 @@ public class HealthifyApplication {
 		SpringApplication.run(HealthifyApplication.class, args);
 	}
 
-	@PostConstruct
-	public void init() {
-		exerciseService.initExercises();
-	}
 }
 
