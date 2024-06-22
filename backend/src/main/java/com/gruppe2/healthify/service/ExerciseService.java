@@ -38,7 +38,7 @@ public class ExerciseService {
     }
 
     public List<Exercise> flexiSearch(String query) {
-        return exerciseRepository.findByNameLike(query + "%")
+        return exerciseRepository.findByNameStartsWith(query)
                 .stream()
                 .limit(5)
                 .toList();

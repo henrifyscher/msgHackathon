@@ -10,5 +10,5 @@ import java.util.Optional;
 @Repository
 public interface ExerciseRepository extends CrudRepository<Exercise, Long> {
 
-   List<Exercise> findByNameLike(String name);
+   List<Exercise> findByNameStartsWith(String name);
 }
