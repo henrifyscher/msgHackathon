@@ -3,10 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import LoginModal from './LoginPopUp';
 import '../styles/login.css'
 
+
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
 
   const mockUser = {
     email: 'abc@gmail.com',
@@ -22,7 +24,13 @@ function Login() {
 
   const handleCloseModal = () => {
     setShowModal(false);
+    navigate('/')
   };
+
+  const GotoHome = () => {
+    useNavigate('/home')
+  }
+
   let mes = `Welcome ${mockUser.email}!`
   return (
     <div className="login-container">
