@@ -11,4 +11,5 @@ import java.util.List;
 @Repository
 public interface WorkoutRepository extends CrudRepository<Workout, Long> {
     List<Workout> findByUserAndDate(User user, LocalDate date);
+    List<Workout> findByUser(User user);
 }
