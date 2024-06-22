@@ -4,7 +4,7 @@ import Aos from "aos"
 import Footer from "./UI/Footer";
 import Header from "./component/Header";
 import AllRoutes from "./component/AllRoutes";
-import Login from "./UI/LogIn/Login";
+import Login from './component/Login'
 
 
 function App() {
@@ -17,7 +17,6 @@ function App() {
   <Header/>
   <AllRoutes/>
   <Footer/>
-  {/* <Login/> */}
   </>;
 }
 

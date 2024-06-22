@@ -4,6 +4,7 @@ import logo from "../assets/img/extended.png";
 import { NavLink } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { AuthContext } from "./AuthContextProvider";
+import { useNavigate } from 'react-router-dom';
 
 const nav__links = [
   {
@@ -22,51 +23,17 @@ const nav__links = [
     path: "/track",
     display: "Track your fitness",
   },
+  {
+    path: "/login",
+    display: "Log in"
+  }
 ];
 
+function GotoLogin(){
+  useNavigate('/login');
+}
 
 const Header = () => {
-  const { loginWithRedirect, isAuthenticated, logout, user } = useAuth0();
-
-  const {filter,setFilter}=useContext(AuthContext);
-
-  const isUserLoggedIn=()=>{
-  // console.log("Rohan2",isAuthenticated);
-    if(isAuthenticated){
-      console.log("user is Authenticated verifying user");
-      verifyUser();
-    }else{
-      console.log("No user is logged in");
-    }
-  }
-// the fetch from kecks data base from here plese change the code !!!!!!
-  const verifyUser=()=>{
-    // console.log(user.name)
-    fetch(`https://healthandfitness.onrender.com/data`).then((res)=>{
-      return res.json();
-    }).then((data)=>{
-      // console.log(user);
-      let filteredData=data.filter((el)=>el.user==user.name);
-      // console.log(filteredData);
-      setFilter(filteredData);
-      if(filteredData.length<1){
-        let obj={
-          "id": Math.floor(Math.random() * 100),
-          "user": user.name,
-          "userdata": []
-        }
-        fetch(`https://healthandfitness.onrender.com/data`,{
-          method:"POST",
-          headers:{
-            "Content-Type":"application/json",
-          },
-          body:JSON.stringify(obj) 
-        })
-        setFilter([obj]);
-      }
-    })
-  }
-
     const headerRef =useRef(null);
     const headerFunc=()=>{
       if(document.body.scrollTop>80 || document.documentElement.scrollTop>80){
@@ -80,19 +47,6 @@ const Header = () => {
 
         return()=>window.removeEventListener("scroll",headerFunc);
     },[])
-
-
-    useEffect(()=>{
-      isUserLoggedIn();
-    },[setFilter,isAuthenticated])
-
-    const handleLogOut=()=>{
-      logout({ returnTo: window.location.origin })
-    }
-
-    const handleLogIn=()=>{
-      loginWithRedirect();
-    }
 
   return (
     <header className="header" ref={headerRef}>
@@ -114,16 +68,12 @@ const Header = () => {
               ))}
             </ul>
           </div>
-          <div className="nav__right">
-          {isAuthenticated && (
-              <p className="nav__item"> {user.name} </p>
-          )}
-            {isAuthenticated?<button className="register__btn" onClick={handleLogOut}>Log Out</button>:
-            <button className="register__btn" onClick={handleLogIn}>Log In</button>}
+          {/* <div className="nav__right">
+            {<button className="register__btn" onClick={GotoLogin}>Log In</button>}
             <span className="mobile__menu">
               <i className="ri-menu-line"></i>
             </span>
-          </div>
+          </div> */}
         </div>
       </div>
     </header>

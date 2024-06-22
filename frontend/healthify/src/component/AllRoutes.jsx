@@ -11,7 +11,8 @@ import { AuthContext } from './AuthContextProvider'
 import Swal from 'sweetalert2';
 import { useAuth0 } from "@auth0/auth0-react";
 import PrivateRoute from './PrivateRoute';
-import Login from '../UI/LogIn/Login';
+// import Login from '../UI/LogIn/Login';
+import Login from '../component/Login';
 
 const AllRoutes = () => {
   const {loginWithRedirect, isAuthenticated,} = useAuth0();
@@ -25,6 +26,7 @@ const AllRoutes = () => {
       <Route path="/track" element={
         isAuthenticated?<Track />:<Login/>
       } />
+      <Route path='/login' element={<Login/>}></Route>
     </Routes>
   )
 }
