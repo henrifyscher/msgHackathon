@@ -37,4 +37,5 @@ Display charts with historical data for each metric.
 Provide health feedback based on average metrics.
 Download a PDF report containing health statistics and charts to give it to your doctor.
 - - -
+![Example Image](src/1.png "Home page")
 
