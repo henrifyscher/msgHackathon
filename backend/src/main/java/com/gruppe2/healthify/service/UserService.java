@@ -29,16 +29,16 @@ public class UserService {
 
     public void initUsers(){
         Set<User> users = Set.of(
-                new User("FZierer", "flozierer@gmail.com", "lol42"),
-                new User("JSample", "jsample@gmail.com", "password123"),
-                new User("AMuster", "amuster@gmail.com", "passwort456"),
-                new User("BSmith", "bsmith@gmail.com", "securepass"),
-                new User("CDoe", "cdoe@gmail.com", "doepass"),
-                new User("EJäger", "ejaeger@gmail.com", "hunter2"),
-                new User("FMüller", "fmueller@gmail.com", "müller123"),
-                new User("GHansen", "ghansen@gmail.com", "hansenpass"),
-                new User("IKlein", "iklein@gmail.com", "kleinpass"),
-                new User("JSchmidt", "jschmidt@gmail.com", "schmidt123")
+                new User("FZierer","lol42", "flozierer@gmail.com"),
+                new User("JSample", "password123", "jsample@gmail.com"),
+                new User("AMuster", "passwort456", "amuster@gmail.com"),
+                new User("BSmith","securepass", "bsmith@gmail.com"),
+                new User("CDoe","doepass", "cdoe@gmail.com"),
+                new User("EJäger","hunter2", "ejaeger@gmail.com"),
+                new User("FMüller","müller123", "fmueller@gmail.com"),
+                new User("GHansen","hansenpass", "ghansen@gmail.com"),
+                new User("IKlein","kleinpass", "iklein@gmail.com"),
+                new User("JSchmidt","schmidt123", "jschmidt@gmail.com")
         );
         userRepository.saveAll(users);
     }
