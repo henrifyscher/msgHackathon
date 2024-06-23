@@ -1,5 +1,5 @@
 # Team 2:  
-# Healthify Project
+# Healthify Project ᕙ(  •̀ ᗜ •́  )ᕗ
 
 This project is aimed at tracking fitness data and providing health insights based on user activities such as training time, calories burned, heart rate, and sleep hours.
 
@@ -42,4 +42,8 @@ Download a PDF report containing health statistics and charts to give it to your
 ![Example Image](src/5.png "Home page")
 ![Example Image](src/6.png "Home page")
 ![Example Image](src/7.png "Home page")
+- - -
+## Demo
+![Example GIF](src/gif.gif)
+
 
