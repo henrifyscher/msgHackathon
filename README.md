@@ -38,4 +38,10 @@ Provide health feedback based on average metrics.
 Download a PDF report containing health statistics and charts to give it to your doctor.
 - - -
 ![Example Image](src/1.png "Home page")
+![Example Image](src/2.png "Home page")
+![Example Image](src/3.png "Home page")
+![Example Image](src/4.png "Home page")
+![Example Image](src/5.png "Home page")
+![Example Image](src/6.png "Home page")
+![Example Image](src/7.png "Home page")
 
