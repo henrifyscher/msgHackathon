@@ -14,9 +14,8 @@ To run this project locally, follow these steps:
    cd healthify
    
 2. Install dependencies using npm or yarn:
-npm install
-# or
-yarn install
+
+npm install or yarn install
 - - - 
 ## Packages Used: 
 
@@ -37,4 +36,6 @@ Display charts with historical data for each metric.
 Provide health feedback based on average metrics.
 Download a PDF report containing health statistics and charts to give it to your doctor.
 - - -
+## How it looks like :
+![Example Image][src/1.png]
 
