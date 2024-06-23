@@ -76,7 +76,7 @@ public class WorkoutController {
             List<Workout> workouts = workoutRepository.findByUser(user);
 
             String workoutDetails = workouts.stream()
-                    .map(workout -> "Date: " + workout.getDate() + ", Exercises: " + workout.getExercises().stream()
+                    .map(workout -> "Datum: " + workout.getDate() + "Name Versicherter: " + user.getUsername() + ", Übungen: " + workout.getExercises().stream()
                             .map(exercise -> exercise.getName() + " (" + exercise.getDescription() + ")")
                             .collect(Collectors.joining(", ")))
                     .collect(Collectors.joining("; "));
