@@ -81,7 +81,8 @@ public class WorkoutController {
                             .collect(Collectors.joining(", ")))
                     .collect(Collectors.joining("; "));
 
-            String combinedPrompt = "Hier sind die Workout Daten des Users, bitte bewerte seinen Versichertenstatus und ob er Prämien erlass bekommen soll:\n" + workoutDetails;
+            String combinedPrompt = "Hier sind die Workout Daten des Users, bitte bewerte seinen Versichertenstatus und ob er Prämien erlass bekommen soll." +
+                    " Bitte behandel dies wie eine Patientenakte oder ähnliches und befülle es dementsprechend Seriös:\n" + workoutDetails;
 
             ChatRequest request = new ChatRequest(model, combinedPrompt);
             request.setN(1);
