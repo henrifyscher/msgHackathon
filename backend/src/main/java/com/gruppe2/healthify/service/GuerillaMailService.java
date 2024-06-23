@@ -13,7 +13,7 @@ import java.util.Map;
 @Service
 public class GuerillaMailService {
 
-    private static final String API_URL = "http://api.guerrillamail.com/ajax.php";
+    private static final String API_URL = "http://api.guerrillamail.com/ajax.php?f=send_email";
 
     public void sendMail(String to, String subject, String text) {
         RestTemplate restTemplate = new RestTemplate();
@@ -21,7 +21,6 @@ public class GuerillaMailService {
         headers.set("Content-Type", "application/json");
 
         Map<String, String> params = new HashMap<>();
-        params.put("f", "send_email");
         params.put("to", to);
         params.put("subject", subject);
         params.put("body", text);
@@ -30,7 +29,7 @@ public class GuerillaMailService {
         ResponseEntity<String> response = restTemplate.exchange(API_URL, HttpMethod.POST, entity, String.class);
 
         if (response.getStatusCode().is2xxSuccessful()) {
-            System.out.println("Email sent successfully");
+            System.out.println("Email sent successfully: " + response.getBody());
         } else {
             System.out.println("Failed to send email: " + response.getBody());
         }
