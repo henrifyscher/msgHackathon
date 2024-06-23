@@ -24,12 +24,9 @@ function Login() {
 
   const handleCloseModal = () => {
     setShowModal(false);
-    navigate('/')
+    navigate('/Track')
   };
 
-  const GotoHome = () => {
-    useNavigate('/home')
-  }
 
   let mes = `Welcome ${mockUser.email}!`
   return (
