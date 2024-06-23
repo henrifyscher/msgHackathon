@@ -14,9 +14,7 @@ To run this project locally, follow these steps:
    cd healthify
    
 2. Install dependencies using npm or yarn:
-npm install
-# or
-yarn install
+npm install  or yarn install
 - - - 
 ## Packages Used: 
 
